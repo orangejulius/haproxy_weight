@@ -51,4 +51,23 @@ describe HaproxyWeight do
       HaproxyWeight.find_weight_value("server foo weight 25").should == 25
     end
   end
+
+  context "is_server_line?" do
+    it "matches lines that start with server and a server name" do
+      HaproxyWeight.is_server_line?("server my_server").should == true
+    end
+
+    it "matches lines that start with whitespace" do
+      HaproxyWeight.is_server_line?("\t server my_server").should == true
+    end
+
+    it "does not match lines that don't start with server and a name" do
+      HaproxyWeight.is_server_line?("\t my_server").should == false
+      HaproxyWeight.is_server_line?("\t something_else server my_server").should == false
+    end
+
+    it "matches line that have stuff after the server and name" do
+      HaproxyWeight.is_server_line?("\t server my_server lots of other options").should == true
+    end
+  end
 end
