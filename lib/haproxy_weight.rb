@@ -13,8 +13,6 @@ class Fixnum
 end
 
 module HaproxyWeight
-  # Your code goes here...
-  #
   def self.valid_weight?(weight)
     return false unless weight.respond_to? :is_integer?
     return false unless weight.is_integer?
