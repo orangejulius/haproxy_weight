@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HaproxyWeight::VERSION
   spec.authors       = ["Julian Simioni"]
   spec.email         = ["julian.simioni@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "Script to change HAProxy backend server weights."
+  spec.summary       = "haproxy_weight is a command line script to safely and easily change weights of servers in an HAProxy backend."
   spec.homepage      = ""
   spec.license       = "MIT"
 
