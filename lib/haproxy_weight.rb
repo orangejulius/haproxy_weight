@@ -18,4 +18,8 @@ module HaproxyWeight
     return false unless weight.is_integer?
     (0..255).include? weight.to_i
   end
+
+  def self.find_weight_value(line)
+    line =~ /weight (\d+)/ ? $1.to_i : nil
+  end
 end

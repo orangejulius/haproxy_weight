@@ -33,4 +33,22 @@ describe HaproxyWeight do
       HaproxyWeight.valid_weight?(Object.new).should == false
     end
   end
+
+  context "find_weight_value" do
+    it "returns the first integer value after the weight keyword" do
+      HaproxyWeight.find_weight_value("weight 50").should == 50
+    end
+
+    it "returns nil if there is no weight keyword" do
+      HaproxyWeight.find_weight_value("server foo").should == nil
+    end
+
+    it "does not return the keyword after the weight value" do
+      HaproxyWeight.find_weight_value("weight 50 check").should == 50
+    end
+
+    it "accepts keywords with arguments before the weight keyword" do
+      HaproxyWeight.find_weight_value("server foo weight 25").should == 25
+    end
+  end
 end
