@@ -1,3 +1,5 @@
+require 'tempfile'
+
 module HaproxyWeight
   class Config
     def initialize(filename)
