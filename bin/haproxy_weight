@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'haproxy_weight'
+
+haproxy_config_filename = ARGV[0]
+
+config = HaproxyWeight::Config.new(haproxy_config_filename)
+
+
+if ARGV[1] # change server weight
+  server_name == ARGV[1]
+  new_weight = ARGV[2]
+
+  config.set_weight(server_name, new_weight)
+else
+  config.weights.each do |server_name, weight|
+    puts "#{server_name} #{weight}"
+  end
+end
