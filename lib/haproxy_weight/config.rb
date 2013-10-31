@@ -12,9 +12,9 @@ module HaproxyWeight
     end
 
     def weights
-      @lines.each do |line|
+      @lines.map do |line|
         next unless line.is_server_line?
-        yield line.server_name, line.weight
+        [line.server_name, line.weight]
       end
     end
 
