@@ -12,6 +12,7 @@ if ARGV[1] # change server weight
   new_weight = ARGV[2]
 
   config.set_weight(server_name, new_weight)
+  config.save
 else
   config.weights.each do |server_name, weight|
     puts "#{server_name} #{weight}"
