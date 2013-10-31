@@ -29,7 +29,7 @@ module HaproxyWeight
       tempfile = Tempfile.new('haproxy.cfg')
       tempfile.write(@lines.join("\n"))
       tempfile.close
-      File.mv tempfile.path '/etc/haproxy/haproxy.cfg'
+      FileUtils.mv tempfile.path, @filename
     end
   end
 end
