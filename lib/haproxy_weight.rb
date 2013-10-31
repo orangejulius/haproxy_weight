@@ -1,3 +1,4 @@
+require "haproxy_weight/config"
 require "haproxy_weight/line"
 require "haproxy_weight/version"
 
