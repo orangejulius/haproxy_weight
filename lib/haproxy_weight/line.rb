@@ -18,6 +18,10 @@ module HaproxyWeight
       (@line =~ /^(\s*)server (\w+)/) != nil
     end
 
+    def to_s
+      @line
+    end
+
     def self.valid_weight?(weight)
       return false unless weight.respond_to? :is_integer?
       return false unless weight.is_integer?

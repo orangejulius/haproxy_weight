@@ -62,6 +62,12 @@ describe HaproxyWeight::Line do
     end
   end
 
+  context "to_s" do
+    it "returns the line value as a string" do
+      HaproxyWeight::Line.new("my line").to_s.should == "my line"
+    end
+  end
+
   context "valid?" do
     it "matches lines that start with server and a server name" do
       line = HaproxyWeight::Line.new("server my_server")
