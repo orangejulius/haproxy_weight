@@ -1,6 +1,20 @@
 # HaproxyWeight
 
-TODO: Write a gem description
+haproxy\_weight is a command line script to safely and easily change weights of servers in an HAProxy backend.
+
+## Usage
+
+There are two usage modes
+
+1.) just viewing the weights of the servers defined in your config file
+
+    # haproxy_weight /path/to/your/haproxy.cfg
+    your_first_server 50
+    your_second_server 20
+
+2.) changing the weight of a server
+
+    # haproxy_weight/path/to/your/haproxy.cfg your_first_server 20
 
 ## Installation
 
@@ -15,10 +29,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install haproxy_weight
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
