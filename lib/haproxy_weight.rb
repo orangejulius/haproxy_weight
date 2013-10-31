@@ -1,3 +1,4 @@
+require "haproxy_weight/line"
 require "haproxy_weight/version"
 
 class String
@@ -13,17 +14,4 @@ class Fixnum
 end
 
 module HaproxyWeight
-  def self.valid_weight?(weight)
-    return false unless weight.respond_to? :is_integer?
-    return false unless weight.is_integer?
-    (0..255).include? weight.to_i
-  end
-
-  def self.find_weight_value(line)
-    line =~ /weight (\d+)/ ? $1.to_i : nil
-  end
-
-  def self.is_server_line?(line)
-    (line =~ /^(\s*)server (\w+)/) != nil
-  end
 end
