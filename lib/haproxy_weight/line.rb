@@ -14,6 +14,11 @@ module HaproxyWeight
       @line =~ /weight (\d+)/ ? $1.to_i : nil
     end
 
+    def weight=(new_weight)
+      raise "weight must be an integer between 0 and 255" unless self.class.valid_weight?(new_weight)
+      @line.sub!(/weight (\d+)/, "weight #{new_weight}")
+    end
+
     def is_server_line?
       (@line =~ /^(\s*)server (\w+)/) != nil
     end

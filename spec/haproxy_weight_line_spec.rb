@@ -62,6 +62,20 @@ describe HaproxyWeight::Line do
     end
   end
 
+  context "weight=" do
+    it "changes the weight value of the line" do
+      line = HaproxyWeight::Line.new("weight 50")
+      line.weight = 25
+      line.to_s.should == "weight 25"
+    end
+
+    it "won't change the weight if the new value is not a valid weight" do
+      line = HaproxyWeight::Line.new("weight 50")
+      expect { line.weight = -5}.to raise_error(RuntimeError, "weight must be an integer between 0 and 255")
+      line.to_s.should == "weight 50"
+    end
+  end
+
   context "to_s" do
     it "returns the line value as a string" do
       HaproxyWeight::Line.new("my line").to_s.should == "my line"
