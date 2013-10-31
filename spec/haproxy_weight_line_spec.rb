@@ -34,6 +34,16 @@ describe HaproxyWeight::Line do
     end
   end
 
+  context "server_name" do
+    it "returns the value immediately after the server keyword" do
+      HaproxyWeight::Line.new("server my_server").server_name.should == "my_server"
+    end
+
+    it "returns nil for invalid lines" do
+      HaproxyWeight::Line.new("my_server").server_name.should == nil
+    end
+  end
+
   context "weight" do
     it "returns the first integer value after the weight keyword" do
       HaproxyWeight::Line.new("weight 50").weight.should == 50

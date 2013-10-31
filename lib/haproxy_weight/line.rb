@@ -5,6 +5,11 @@ module HaproxyWeight
       @line = line
     end
 
+    def server_name
+      return unless is_server_line?
+      @line.match(/^(\s*)server (\w+)/)[2]
+    end
+
     def weight
       @line =~ /weight (\d+)/ ? $1.to_i : nil
     end
