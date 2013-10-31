@@ -27,7 +27,7 @@ module HaproxyWeight
 
     def save
       tempfile = Tempfile.new('haproxy.cfg')
-      tempfile.write(@lines.join("\n"))
+      tempfile.write(@lines.join)
       tempfile.close
       FileUtils.mv tempfile.path, @filename
     end
