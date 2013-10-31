@@ -33,8 +33,3 @@ module HaproxyWeight
     end
   end
 end
-
-#open and read file
-#modify file contents
-#write to temp file
-#move temp file to real location
