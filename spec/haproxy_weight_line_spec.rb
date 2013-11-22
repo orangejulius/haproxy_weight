@@ -42,6 +42,10 @@ describe HaproxyWeight::Line do
     it "returns nil for invalid lines" do
       HaproxyWeight::Line.new("my_server").server_name.should == nil
     end
+
+    it "handles dashes within server names" do
+      HaproxyWeight::Line.new("server my-server").server_name.should == "my-server"
+    end
   end
 
   context "weight" do

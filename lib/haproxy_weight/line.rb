@@ -7,7 +7,7 @@ module HaproxyWeight
 
     def server_name
       return unless is_server_line?
-      @line.match(/^(\s*)server (\w+)/)[2]
+      @line.match(/^(\s*)server (\S+)/)[2]
     end
 
     def weight
@@ -20,7 +20,7 @@ module HaproxyWeight
     end
 
     def is_server_line?
-      (@line =~ /^(\s*)server (\w+)/) != nil
+      (@line =~ /^(\s*)server (\S+)/) != nil
     end
 
     def to_s
